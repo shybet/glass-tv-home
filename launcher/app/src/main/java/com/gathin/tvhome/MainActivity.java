@@ -405,11 +405,12 @@ public class MainActivity extends Activity implements AppAdapter.TileListener {
             if (!catFiles.isEmpty()) wallpapers = catFiles;
             else if (cfg.wallpaperOnline && wallpapers.isEmpty()) wallpapers = OnlineWallpapers.list(this);
             if (wallpapers.isEmpty()) {
+                final String categoryForSync = activeCat;
                 new Thread(() -> {
-                    OnlineWallpapers.syncCategory(getApplicationContext(), activeCat);
+                    OnlineWallpapers.syncCategory(getApplicationContext(), categoryForSync);
                     handler.post(() -> {
                         if (isDestroyed()) return;
-                        List<File> fresh = OnlineWallpapers.listByCategory(MainActivity.this, activeCat);
+                        List<File> fresh = OnlineWallpapers.listByCategory(MainActivity.this, categoryForSync);
                         if (!fresh.isEmpty()) {
                             wallpapers = fresh;
                             showNextWallpaper(false);
