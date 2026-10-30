@@ -180,7 +180,6 @@ public class MainActivity extends Activity implements AppAdapter.TileListener {
     private View btnAssistant;
     private View btnCandyBox;
     private TextView ampmView, dateView;
-    private TextView shamsiDate;
     private TextView weatherAirQualityView;
     private View nowPlayingCard;
     private ImageView cardAlbumArt;
@@ -195,7 +194,6 @@ public class MainActivity extends Activity implements AppAdapter.TileListener {
     private String lastPlayedTrackKey = "";
     private NowPlayingManager.Listener nowPlayingListener;
     private boolean homeWeatherRunning;
-    private boolean shamsi;
     private String vpnApp;
     private SpringAnimation springX, springY;
     private float glassTargetX, glassTargetY;
@@ -310,8 +308,6 @@ public class MainActivity extends Activity implements AppAdapter.TileListener {
     private final Runnable minuteTick = new Runnable() {
         @Override
         public void run() {
-            updateShamsiDate();
-
             updateDateAndPeriod();
             updateWifiLabel();
             updateWeatherAqi();
@@ -556,14 +552,6 @@ public class MainActivity extends Activity implements AppAdapter.TileListener {
 
         btnWifi = findViewById(R.id.btnWifi);
         if (!cfg.showNetworkPill) btnWifi.setVisibility(View.GONE);
-        shamsiDate = findViewById(R.id.shamsiDate);
-        shamsi = cfg.shamsiDate;
-        if (shamsi) {
-            shamsiDate.setVisibility(View.VISIBLE);
-            TextView date = findViewById(R.id.date);
-            date.setTextSize(11f);
-            date.setPadding(0, (int) (4 * density), 0, 0);
-        }
         vpnApp = cfg.vpnApp;
         moduleCards = cfg.moduleCards;
         hiddenApps = new HashSet<>(cfg.hiddenApps);
@@ -1148,7 +1136,6 @@ public class MainActivity extends Activity implements AppAdapter.TileListener {
         promptsPaused = false;
         resuming = true;
         reloadApps(true);
-        updateShamsiDate();
 
         updateDateAndPeriod();
         updateWifiLabel();
@@ -2170,9 +2157,6 @@ public class MainActivity extends Activity implements AppAdapter.TileListener {
 
     // ---- top bar ---------------------------------------------------------------------------------
 
-    private void updateShamsiDate() {
-        if (shamsi) shamsiDate.setText(Shamsi.today());
-    }
 
 
     private void updateWeatherAqi() {
