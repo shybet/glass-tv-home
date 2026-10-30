@@ -2570,12 +2570,10 @@ public class MainActivity extends Activity implements AppAdapter.TileListener {
     private void showLanguageDialog() {
         SoundEffects.playSelect();
         final String[] langOptions = new String[]{
-                "🇲🇾 Bahasa Melayu (Standard)",
                 "🇬🇧 English",
                 "🇮🇩 Bahasa Indonesia"
         };
         final String[] langKeys = new String[]{
-                AppLanguage.LANG_MS,
                 AppLanguage.LANG_EN,
                 AppLanguage.LANG_ID
         };

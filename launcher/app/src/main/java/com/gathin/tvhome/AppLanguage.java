@@ -11,6 +11,8 @@ import java.util.Locale;
  * - Bahasa Indonesia (id)
  */
 final class AppLanguage {
+    // Legacy value retained for source compatibility; it is no longer selectable or returned.
+    public static final String LANG_MS = "ms";
     public static final String LANG_EN = "en"; // English
     public static final String LANG_ID = "id"; // Bahasa Indonesia
 
