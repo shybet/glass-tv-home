@@ -148,7 +148,7 @@ public class MainActivity extends Activity implements AppAdapter.TileListener {
     private final Rect alignCard = new Rect(), alignButton = new Rect();
     /** How much of the space between the side paddings the top shelf may use. */
     private static final float HERO_WIDTH_SHARE = 0.40f;
-    /** The name is one line, and may run wider than the description, up to this share (capped to avoid overlapping Islamic shelf). */
+    /** The name is one line, and may run wider than the description, up to this share (capped to keep clear of the right side). */
     private static final float HERO_NAME_WIDTH_SHARE = 0.45f;
     private static final float HERO_TITLE_MAX_SP = 40f;
     /** The breathing room between the shelf's last line and the top of the app container (50dp gives airy, balanced spacing). */
@@ -1087,11 +1087,6 @@ public class MainActivity extends Activity implements AppAdapter.TileListener {
         if (intent != null && intent.getBooleanExtra("open_candy_box", false)) {
             if (screensaverActive) dismissScreensaver();
             showCandyBoxPopup();
-            return;
-        }
-        if (intent != null && intent.getBooleanExtra("open_azan_settings", false)) {
-            if (screensaverActive) dismissScreensaver();
-            
             return;
         }
         if (intent != null && intent.getBooleanExtra("open_clean_cache", false)) {
@@ -4707,9 +4702,6 @@ public class MainActivity extends Activity implements AppAdapter.TileListener {
     }
 
 
-    /** Shows an Apple TV-style frosted glass Putrajaya prayer timetable popup. */
-
-
     private void checkInactivity() {
         if (!hasWindowFocus() || isFinishing() || isDestroyed()) return;
         long idleMs = android.os.SystemClock.elapsedRealtime() - lastUserInteraction;
@@ -4768,26 +4760,11 @@ public class MainActivity extends Activity implements AppAdapter.TileListener {
             if (clock != null) clock.setTextColor(red);
             if (ampm != null) ampm.setTextColor(0xCCFF453A);
             if (date != null) date.setTextColor(0xE6FF453A);
-            if (hijri != null) hijri.setTextColor(0xE6FF453A);
-            if (prayer != null) {
-                prayer.setTextColor(red);
-                android.graphics.drawable.GradientDrawable redPill = new android.graphics.drawable.GradientDrawable();
-                redPill.setShape(android.graphics.drawable.GradientDrawable.RECTANGLE);
-                redPill.setColor(0x26FF453A);
-                redPill.setStroke((int) (1 * density), 0x59FF453A);
-                redPill.setCornerRadius(21 * density);
-                prayer.setBackground(redPill);
-            }
             if (hint != null) hint.setTextColor(0x55FF453A);
         } else {
             if (clock != null) clock.setTextColor(0xFFFFFFFF);
             if (ampm != null) ampm.setTextColor(0xB3FFFFFF);
             if (date != null) date.setTextColor(0xE6FFFFFF);
-            if (hijri != null) hijri.setTextColor(0xD9E6E0D2);
-            if (prayer != null) {
-                prayer.setTextColor(0xFFFFFFFF);
-                prayer.setBackgroundResource(R.drawable.pill_bg);
-            }
             if (hint != null) hint.setTextColor(0x4DFFFFFF);
         }
     }

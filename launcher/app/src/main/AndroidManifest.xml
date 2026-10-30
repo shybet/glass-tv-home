@@ -115,7 +115,7 @@
             </intent-filter>
         </receiver>
 
-        <!-- Weather location picker --> JAKIM zone for Waktu Solat & Open-Meteo town for weather -->
+        <!-- Weather location picker. -->
         <activity
             android:name=".LocationActivity"
             android:exported="true"
