@@ -378,7 +378,11 @@ public class MainActivity extends Activity implements AppAdapter.TileListener {
         if (heroName != null) heroName.setMaxWidth(heroNameMaxWidth);
         if (heroDesc != null) heroDesc.setMaxWidth(heroMaxWidth);
 
-        String activeCat = getSharedPreferences("wallpaper_prefs", MODE_PRIVATE).getString("active_category", "Malaysia");
+        String activeCat = getSharedPreferences("wallpaper_prefs", MODE_PRIVATE).getString("active_category", "Natural");
+        if (activeCat.equalsIgnoreCase("Malaysia") || activeCat.startsWith("Malaysia_")) {
+            activeCat = "Natural";
+            getSharedPreferences("wallpaper_prefs", MODE_PRIVATE).edit().putString("active_category", activeCat).apply();
+        }
         if ("Custom".equalsIgnoreCase(activeCat)) {
             placesMode = false;
             File customDir = new File(getFilesDir(), "custom_wallpapers");
@@ -823,9 +827,6 @@ public class MainActivity extends Activity implements AppAdapter.TileListener {
                     .build(), vpnCallback);
         }
 
-        // Silent background update check after 5 seconds on launch
-        handler.postDelayed(() -> AppUpdateManager.checkForUpdates(this, false), 5000);
-
         if (getIntent() != null && getIntent().getBooleanExtra("open_settings", false)) {
             handler.postDelayed(() -> {
                 if (screensaverActive) dismissScreensaver();
@@ -950,11 +951,7 @@ public class MainActivity extends Activity implements AppAdapter.TileListener {
     }
 
     private boolean isWallpaperDescEnabled() {
-        return getSharedPreferences("wallpaper_prefs", MODE_PRIVATE).getBoolean("show_wallpaper_desc", true);
-    }
-
-    private void setWallpaperDescEnabled(boolean enabled) {
-        getSharedPreferences("wallpaper_prefs", MODE_PRIVATE).edit().putBoolean("show_wallpaper_desc", enabled).apply();
+        return false; // Home wallpaper captions are intentionally disabled.
     }
 
     /** Shows the next picture from the wallpapers folder; the position survives restarts. */
@@ -2478,21 +2475,7 @@ public class MainActivity extends Activity implements AppAdapter.TileListener {
             showCandyBoxPopup();
         });
 
-        // Row 6: Sound Effects
-        String currentSoundTheme = SoundEffects.getActiveTheme(this);
-        addInputRow(rows, close, R.drawable.ic_sound, AppLanguage.strSoundRow(this, SoundEffects.getThemeDisplayName(currentSoundTheme)), -1, () -> {
-            SoundEffects.playSelect();
-            showSoundEffectsDialog();
-        });
-
-        // Row 7: Auto-Update (OTA)
-        boolean isAuto = AppUpdateManager.isAutoUpdateEnabled(this);
-        addInputRow(rows, close, R.drawable.ic_update, AppLanguage.strAutoUpdateRow(this, isAuto, getAppVersionName()), -1, () -> {
-            SoundEffects.playSelect();
-            showAutoUpdateDialog();
-        });
-
-        // Row 8: Pilihan Bahasa / Language
+        // Row 6: Pilihan Bahasa / Language
         addInputRow(rows, close, R.drawable.ic_language, AppLanguage.strLanguage(this) + ": " + AppLanguage.getLanguageBadge(this), -1, () -> {
             SoundEffects.playSelect();
             closeMenu(false);
@@ -2582,51 +2565,7 @@ public class MainActivity extends Activity implements AppAdapter.TileListener {
         showMenu(panel, rows, anchor, width, false);
     }
 
-    private void showSoundEffectsDialog() {
-        final String[] soundOptions = new String[]{
-                "🎮 PlayStation 5 (Lalai / Default Chime)",
-                "🕹️ Nintendo Switch (Click & Snap Pop)",
-                "🟩 Xbox Series X/S (Warm Harmonic Chime)",
-                "🔇 Matikan Bunyi (Off / Muted)"
-        };
 
-        final String[] soundKeys = new String[]{
-                SoundEffects.THEME_PS5,
-                SoundEffects.THEME_SWITCH,
-                SoundEffects.THEME_XBOX,
-                SoundEffects.THEME_OFF
-        };
-
-        String currentTheme = SoundEffects.getActiveTheme(this);
-        int selectedIndex = 0;
-        for (int i = 0; i < soundKeys.length; i++) {
-            if (soundKeys[i].equalsIgnoreCase(currentTheme)) {
-                selectedIndex = i;
-                break;
-            }
-        }
-
-        AlertDialog.Builder builder = new AlertDialog.Builder(this, R.style.Theme_TvHome_GlassDialog);
-        builder.setTitle("🔊 Pilih Kesan Bunyi (Sound Effects)");
-        builder.setSingleChoiceItems(soundOptions, selectedIndex, (dialog, which) -> {
-            dialog.dismiss();
-            String chosenKey = soundKeys[which];
-            SoundEffects.setTheme(MainActivity.this, chosenKey);
-            String displayName = SoundEffects.getThemeDisplayName(chosenKey);
-
-            if (SoundEffects.THEME_OFF.equalsIgnoreCase(chosenKey)) {
-                Toast.makeText(MainActivity.this, "🔇 Kesan Bunyi Dimatikan", Toast.LENGTH_SHORT).show();
-            } else {
-                Toast.makeText(MainActivity.this, "🔊 Kesan Bunyi: " + displayName, Toast.LENGTH_SHORT).show();
-                // Play sample of the selected theme
-                handler.postDelayed(() -> SoundEffects.playSelect(), 120);
-            }
-        });
-        builder.setNegativeButton("Tutup / Cancel", (dialog, which) -> dialog.dismiss());
-        AlertDialog dialog = builder.create();
-        dialog.show();
-        styleGlassDialog(dialog);
-    }
 
     private void showLanguageDialog() {
         SoundEffects.playSelect();
@@ -2851,154 +2790,9 @@ public class MainActivity extends Activity implements AppAdapter.TileListener {
         }
     }
 
-    private void showAutoUpdateDialog() {
-        SoundEffects.playSelect();
-        View view = getLayoutInflater().inflate(R.layout.dialog_ota_coffee, null);
 
-        TextView tvVersionSubtitle = view.findViewById(R.id.tvVersionSubtitle);
-        TextView tvAutoStatus = view.findViewById(R.id.tvAutoStatus);
-        TextView btnCheckNow = view.findViewById(R.id.btnCheckNow);
-        TextView btnChangeTime = view.findViewById(R.id.btnChangeTime);
-        TextView btnToggleAuto = view.findViewById(R.id.btnToggleAuto);
-        TextView btnClose = view.findViewById(R.id.btnClose);
-        ImageView imgQrCoffee = view.findViewById(R.id.imgQrCoffee);
 
-        if (tvVersionSubtitle != null) {
-            tvVersionSubtitle.setText("Glass TV Home v" + getAppVersionName() + " • Enjin Auto-Update (OTA)");
-        }
 
-        Runnable updateStatusUi = () -> {
-            boolean isAuto = AppUpdateManager.isAutoUpdateEnabled(this);
-            String sched = AppUpdateManager.getAutoUpdateTime(this);
-            if (tvAutoStatus != null) {
-                tvAutoStatus.setText(isAuto ? "✅ Auto-Update: Aktif (" + sched + ")" : "⭕ Auto-Update: Dimatikan");
-            }
-            if (btnToggleAuto != null) {
-                btnToggleAuto.setText(isAuto ? "❌ Matikan Auto-Update" : "⚡ Hidupkan Auto-Update");
-            }
-        };
-        updateStatusUi.run();
-
-        AlertDialog.Builder builder = new AlertDialog.Builder(this, R.style.Theme_TvHome_GlassDialog);
-        builder.setView(view);
-        AlertDialog dialog = builder.create();
-
-        View.OnFocusChangeListener focusListener = (v, hasFocus) -> {
-            if (v instanceof TextView) {
-                ((TextView) v).setTextColor(hasFocus ? 0xFF000000 : 0xFFFFFFFF);
-            }
-            if (hasFocus) SoundEffects.playNav();
-        };
-        if (btnCheckNow != null) {
-            btnCheckNow.setTextColor(0xFF000000);
-            btnCheckNow.setOnFocusChangeListener(focusListener);
-        }
-        if (btnChangeTime != null) {
-            btnChangeTime.setTextColor(0xFFFFFFFF);
-            btnChangeTime.setOnFocusChangeListener(focusListener);
-        }
-        if (btnToggleAuto != null) {
-            btnToggleAuto.setTextColor(0xFFFFFFFF);
-            btnToggleAuto.setOnFocusChangeListener(focusListener);
-        }
-        if (btnClose != null) {
-            btnClose.setTextColor(0xFFFFFFFF);
-            btnClose.setOnFocusChangeListener(focusListener);
-        }
-
-        if (btnCheckNow != null) {
-            btnCheckNow.setOnClickListener(v -> {
-                SoundEffects.playSelect();
-                dialog.dismiss();
-                AppUpdateManager.checkForUpdates(MainActivity.this, true);
-            });
-        }
-
-        if (btnChangeTime != null) {
-            btnChangeTime.setOnClickListener(v -> {
-                SoundEffects.playSelect();
-                dialog.dismiss();
-                showUpdateTimePickerDialog();
-            });
-        }
-
-        if (btnToggleAuto != null) {
-            btnToggleAuto.setOnClickListener(v -> {
-                SoundEffects.playSelect();
-                boolean isAuto = AppUpdateManager.isAutoUpdateEnabled(this);
-                boolean newMode = !isAuto;
-                AppUpdateManager.setAutoUpdateEnabled(this, newMode);
-                updateStatusUi.run();
-                Toast.makeText(this, newMode ? "✅ Auto-Update Dihidupkan (" + AppUpdateManager.getAutoUpdateTime(this) + ")" : "⭕ Auto-Update Dimatikan", Toast.LENGTH_SHORT).show();
-            });
-        }
-
-        if (btnClose != null) {
-            btnClose.setOnClickListener(v -> {
-                SoundEffects.playSelect();
-                dialog.dismiss();
-            });
-        }
-
-        if (imgQrCoffee != null) {
-            imgQrCoffee.setOnClickListener(v -> {
-                SoundEffects.playSelect();
-                Toast.makeText(this, "☕ Terima kasih atas sokongan belanja kopi! (@imsomangge)", Toast.LENGTH_SHORT).show();
-            });
-        }
-
-        dialog.show();
-        styleGlassDialog(dialog);
-
-        Window window = dialog.getWindow();
-        if (window != null) {
-            window.setBackgroundDrawableResource(android.R.color.transparent);
-            int width = Math.min((int) (680 * density), (int) (getResources().getDisplayMetrics().widthPixels * 0.85f));
-            window.setLayout(width, ViewGroup.LayoutParams.WRAP_CONTENT);
-            window.setGravity(Gravity.CENTER);
-        }
-
-        if (btnCheckNow != null) btnCheckNow.requestFocus();
-    }
-
-    private void showUpdateTimePickerDialog() {
-        final String[] times = new String[]{
-                "🌙 03:30 AM (Cadangan Terbaik: Waktu Tidur & Subuh)",
-                "🌙 04:00 AM (Awal Pagi)",
-                "🌙 05:00 AM (Subuh)",
-                "☀️ 12:00 PM (Tengah Hari)",
-                "🌃 02:00 AM (Tengah Malam)"
-        };
-        final String[] rawTimes = new String[]{
-                "03:30 AM", "04:00 AM", "05:00 AM", "12:00 PM", "02:00 AM"
-        };
-        String current = AppUpdateManager.getAutoUpdateTime(this);
-        int selectedIndex = 0;
-        for (int i = 0; i < rawTimes.length; i++) {
-            if (rawTimes[i].equalsIgnoreCase(current)) {
-                selectedIndex = i;
-                break;
-            }
-        }
-
-        AlertDialog.Builder builder = new AlertDialog.Builder(this, R.style.Theme_TvHome_GlassDialog);
-        builder.setTitle("⏱️ Pilih Waktu Auto-Update Harian");
-        builder.setSingleChoiceItems(times, selectedIndex, (dialog, which) -> {
-            dialog.dismiss();
-            String chosen = rawTimes[which];
-            AppUpdateManager.setAutoUpdateTime(MainActivity.this, chosen);
-            AppUpdateManager.setAutoUpdateEnabled(MainActivity.this, true);
-            Toast.makeText(MainActivity.this, "Waktu Auto-Update ditetapkan ke: " + chosen, Toast.LENGTH_SHORT).show();
-            showAutoUpdateDialog();
-        });
-        builder.setNegativeButton("Kembali", (dialog, which) -> {
-            dialog.dismiss();
-            showAutoUpdateDialog();
-        });
-        AlertDialog dialog = builder.create();
-        dialog.show();
-        styleGlassDialog(dialog);
-    }
 
     private void updateNowPlayingUi(NowPlayingManager.MediaInfo info) {
         if (nowPlayingCard == null || cardTitle == null || cardSubtitle == null) return;
@@ -3284,7 +3078,8 @@ public class MainActivity extends Activity implements AppAdapter.TileListener {
         File[] customFiles = customDir.listFiles((dir, name) -> name.endsWith(".jpg") || name.endsWith(".png") || name.endsWith(".jpeg"));
         int customCount = (customFiles != null) ? customFiles.length : 0;
 
-        String currentKey = getSharedPreferences("wallpaper_prefs", MODE_PRIVATE).getString("active_category", "Malaysia");
+        String currentKey = getSharedPreferences("wallpaper_prefs", MODE_PRIVATE).getString("active_category", "Natural");
+        if (currentKey.equalsIgnoreCase("Malaysia") || currentKey.startsWith("Malaysia_")) currentKey = "Natural";
 
         class WallpaperOption {
             final String key;
@@ -3299,11 +3094,6 @@ public class MainActivity extends Activity implements AppAdapter.TileListener {
 
         String curLang = AppLanguage.getLanguage(this);
         List<WallpaperOption> options = new ArrayList<>();
-
-        // Category 1: Malaysia
-        String tMal = AppLanguage.LANG_EN.equals(curLang) ? "🇲🇾 Attractions in Malaysia" : (AppLanguage.LANG_ID.equals(curLang) ? "🇲🇾 Tempat Wisata Malaysia" : "🇲🇾 Tempat Menarik di Malaysia");
-        String sMal = AppLanguage.LANG_EN.equals(curLang) ? "16 Iconic 4K Collection (Pexels Ultra HD)" : "16 Koleksi 4K Ikonik (Pexels Ultra HD)";
-        options.add(new WallpaperOption("Malaysia", tMal, sMal));
 
         // Category 2: Natural
         String tNat = AppLanguage.LANG_EN.equals(curLang) ? "🌿 Nature & Landscapes" : (AppLanguage.LANG_ID.equals(curLang) ? "🌿 Alam Semesta & Lanskap" : "🌿 Alam Semula Jadi & Landskap");
@@ -3341,7 +3131,6 @@ public class MainActivity extends Activity implements AppAdapter.TileListener {
         String intervalText = AppLanguage.strWallpaperIntervalText(this, curInterval);
 
         boolean isShuffle = getSharedPreferences("wallpaper_prefs", MODE_PRIVATE).getBoolean("shuffle_mode", true);
-        boolean isDescOn = isWallpaperDescEnabled();
         boolean isWeatherFxOn = getSharedPreferences("wallpaper_prefs", MODE_PRIVATE).getBoolean("dynamic_weather_overlay", true);
 
         String tInt = (AppLanguage.LANG_EN.equals(curLang) ? "⏱️ Shuffle Interval: " : (AppLanguage.LANG_ID.equals(curLang) ? "⏱️ Interval Shuffle: " : "⏱️ Selang Masa Shuffle: ")) + intervalText;
@@ -3353,12 +3142,6 @@ public class MainActivity extends Activity implements AppAdapter.TileListener {
                 ? (AppLanguage.LANG_EN.equals(curLang) ? "Photos picked randomly without repeats" : (AppLanguage.LANG_ID.equals(curLang) ? "Gambar dipilih acak tanpa berulang" : "Gambar dipilih secara rawak tanpa mengulang"))
                 : (AppLanguage.LANG_EN.equals(curLang) ? "Photos cycle through catalog order" : (AppLanguage.LANG_ID.equals(curLang) ? "Gambar bertukar sesuai urutan katalog" : "Gambar bertukar mengikut urutan katalog"));
         options.add(new WallpaperOption("TOGGLE_SHUFFLE", tShf, sShf));
-
-        String tDsc = (AppLanguage.LANG_EN.equals(curLang) ? "🏷️ Image Title & Info: " : (AppLanguage.LANG_ID.equals(curLang) ? "🏷️ Info & Deskripsi Gambar: " : "🏷️ Info & Deskripsi Gambar: ")) + (isDescOn ? (AppLanguage.LANG_EN.equals(curLang) ? "ON" : (AppLanguage.LANG_ID.equals(curLang) ? "Aktif (ON)" : "Dihidupkan (ON)")) : (AppLanguage.LANG_EN.equals(curLang) ? "OFF" : (AppLanguage.LANG_ID.equals(curLang) ? "Mati (OFF)" : "Dimatikan (OFF)")));
-        String sDsc = isDescOn
-                ? (AppLanguage.LANG_EN.equals(curLang) ? "Display title and description on home screen" : (AppLanguage.LANG_ID.equals(curLang) ? "Tampilkan judul dan deskripsi gambar di layar utama" : "Paparkan tajuk dan penerangan gambar di skrin utama"))
-                : (AppLanguage.LANG_EN.equals(curLang) ? "Hide text for a clean screen display" : (AppLanguage.LANG_ID.equals(curLang) ? "Sembunyikan teks untuk tampilan layar bersih" : "Sembunyikan teks untuk paparan skrin bersih (Clean Look)"));
-        options.add(new WallpaperOption("TOGGLE_DESC", tDsc, sDsc));
 
         String tWtr = (AppLanguage.LANG_EN.equals(curLang) ? "🌧️ Dynamic Weather: " : (AppLanguage.LANG_ID.equals(curLang) ? "🌧️ Cuaca Dinamis: " : "🌧️ Dynamic Weather: ")) + (isWeatherFxOn ? (AppLanguage.LANG_EN.equals(curLang) ? "ON" : (AppLanguage.LANG_ID.equals(curLang) ? "Aktif (ON)" : "Dihidupkan (ON)")) : (AppLanguage.LANG_EN.equals(curLang) ? "OFF" : (AppLanguage.LANG_ID.equals(curLang) ? "Mati (OFF)" : "Dimatikan (OFF)")));
         String sWtr = isWeatherFxOn
@@ -3508,31 +3291,6 @@ public class MainActivity extends Activity implements AppAdapter.TileListener {
                     boolean newMode = !current;
                     getSharedPreferences("wallpaper_prefs", MODE_PRIVATE).edit().putBoolean("shuffle_mode", newMode).apply();
                     Toast.makeText(MainActivity.this, newMode ? "🔀 Mod Rawak: Gambar Dipilih Secara Rawak" : "➡️ Mod Berurutan: Gambar Dipilih Ikut Urutan", Toast.LENGTH_SHORT).show();
-                    showWallpaperDialog();
-                } else if ("TOGGLE_DESC".equals(chosenKey)) {
-                    boolean current = isWallpaperDescEnabled();
-                    boolean newMode = !current;
-                    setWallpaperDescEnabled(newMode);
-                    if (!newMode) {
-                        if (heroShelf != null) {
-                            heroShelf.animate().cancel();
-                            heroShelf.setAlpha(0f);
-                            heroShelf.setVisibility(View.GONE);
-                        }
-                        Toast.makeText(MainActivity.this, "Deskripsi Wallpaper Dimatikan (Clean Look)", Toast.LENGTH_SHORT).show();
-                    } else {
-                        if (heroShelf != null && !isCustomWallpaper()) {
-                            heroShelf.setVisibility(View.VISIBLE);
-                            heroShelf.setAlpha(1f);
-                            if (wallpapers != null && !wallpapers.isEmpty()) {
-                                int curIdx = getSharedPreferences("wallpaper", MODE_PRIVATE).getInt("index", 0);
-                                if (curIdx >= 0 && curIdx < wallpapers.size()) {
-                                    setPlace(wallpapers.get(curIdx));
-                                }
-                            }
-                        }
-                        Toast.makeText(MainActivity.this, "Deskripsi Wallpaper Dihidupkan (ON)", Toast.LENGTH_SHORT).show();
-                    }
                     showWallpaperDialog();
                 } else if ("TOGGLE_WEATHER_OVERLAY".equals(chosenKey)) {
                     boolean current = getSharedPreferences("wallpaper_prefs", MODE_PRIVATE).getBoolean("dynamic_weather_overlay", true);
@@ -3932,9 +3690,7 @@ public class MainActivity extends Activity implements AppAdapter.TileListener {
     private void switchWallpaperCategory(String category) {
         getSharedPreferences("wallpaper_prefs", MODE_PRIVATE).edit().putString("active_category", category).apply();
         String displayLabel;
-        if ("Malaysia".equalsIgnoreCase(category)) {
-            displayLabel = "Tempat Menarik di Malaysia";
-        } else if ("Minimalist".equalsIgnoreCase(category)) {
+        if ("Minimalist".equalsIgnoreCase(category)) {
             displayLabel = "Minimalis Gelap (OLED)";
         } else {
             displayLabel = category;

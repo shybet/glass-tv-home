@@ -7,12 +7,10 @@ import java.util.Locale;
 
 /**
  * Multi-language support for Glass TV Home:
- * - Bahasa Melayu (ms) [Default]
  * - English (en)
  * - Bahasa Indonesia (id)
  */
 final class AppLanguage {
-    public static final String LANG_MS = "ms"; // Bahasa Melayu
     public static final String LANG_EN = "en"; // English
     public static final String LANG_ID = "id"; // Bahasa Indonesia
 
@@ -22,16 +20,19 @@ final class AppLanguage {
     private AppLanguage() {}
 
     public static String getLanguage(Context ctx) {
-        if (ctx == null) return LANG_MS;
-        return ctx.getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE)
-                .getString(KEY_LANG, LANG_MS);
+        if (ctx == null) return LANG_ID;
+        String saved = ctx.getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE)
+                .getString(KEY_LANG, LANG_ID);
+        // Migrate existing Malaysian-language installations to Indonesian.
+        return "ms".equalsIgnoreCase(saved) ? LANG_ID : (LANG_EN.equals(saved) ? LANG_EN : LANG_ID);
     }
 
     public static void setLanguage(Context ctx, String lang) {
         if (ctx == null || lang == null) return;
+        String supported = LANG_EN.equals(lang) ? LANG_EN : LANG_ID;
         ctx.getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE)
                 .edit()
-                .putString(KEY_LANG, lang)
+                .putString(KEY_LANG, supported)
                 .apply();
     }
 
@@ -42,9 +43,8 @@ final class AppLanguage {
                 return "English";
             case LANG_ID:
                 return "Bahasa Indonesia";
-            case LANG_MS:
             default:
-                return "Bahasa Melayu";
+                return "Bahasa Indonesia";
         }
     }
 
@@ -55,9 +55,8 @@ final class AppLanguage {
                 return "🇬🇧 EN";
             case LANG_ID:
                 return "🇮🇩 ID";
-            case LANG_MS:
             default:
-                return "🇲🇾 BM";
+                return "🇮🇩 ID";
         }
     }
 
@@ -117,7 +116,7 @@ final class AppLanguage {
         switch (getLanguage(ctx)) {
             case LANG_EN: return "Language Selection";
             case LANG_ID: return "Pilihan Bahasa";
-            case LANG_MS: default: return "Pilihan Bahasa";
+            default: return "Pilihan Bahasa";
         }
     }
 
@@ -180,22 +179,9 @@ final class AppLanguage {
 
     
     
-    public static String strSoundRow(Context ctx, String themeName) {
-        switch (getLanguage(ctx)) {
-            case LANG_EN: return "Sound: " + themeName;
-            case LANG_ID: return "Efek Suara: " + themeName;
-            case LANG_MS: default: return "Kesan Bunyi: " + themeName;
-        }
-    }
 
-    public static String strAutoUpdateRow(Context ctx, boolean on, String version) {
-        String state = on ? "ON" : "OFF";
-        switch (getLanguage(ctx)) {
-            case LANG_EN: return "Auto-Update: " + state + " (v" + version + ")";
-            case LANG_ID: return "Pembaruan Otomatis: " + state + " (v" + version + ")";
-            case LANG_MS: default: return "Kemas Kini Automatik: " + state + " (v" + version + ")";
-        }
-    }
+
+
 
     public static String strScreensaver(Context ctx) {
         switch (getLanguage(ctx)) {
@@ -206,21 +192,9 @@ final class AppLanguage {
     }
 
     
-    public static String strSoundEffects(Context ctx) {
-        switch (getLanguage(ctx)) {
-            case LANG_EN: return "Sound Effects";
-            case LANG_ID: return "Efek Suara";
-            case LANG_MS: default: return "Kesan Bunyi";
-        }
-    }
 
-    public static String strAutoUpdate(Context ctx) {
-        switch (getLanguage(ctx)) {
-            case LANG_EN: return "Auto-Update";
-            case LANG_ID: return "Pembaruan Otomatis";
-            case LANG_MS: default: return "Kemas Kini Automatik";
-        }
-    }
+
+
 
     public static String strLanguageChangedToast(Context ctx, String lang) {
         switch (lang) {
@@ -228,9 +202,8 @@ final class AppLanguage {
                 return "Language switched to English 🇬🇧";
             case LANG_ID:
                 return "Bahasa diubah ke Bahasa Indonesia 🇮🇩";
-            case LANG_MS:
             default:
-                return "Bahasa ditukar ke Bahasa Melayu 🇲🇾";
+                return "Bahasa diubah ke Bahasa Indonesia 🇮🇩";
         }
     }
 
@@ -238,7 +211,7 @@ final class AppLanguage {
         switch (getLanguage(ctx)) {
             case LANG_EN: return "Now";
             case LANG_ID: return "Aktif";
-            case LANG_MS: default: return "Kini";
+            default: return "Aktif";
         }
     }
 
