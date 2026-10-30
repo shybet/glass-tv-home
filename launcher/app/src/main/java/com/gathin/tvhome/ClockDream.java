@@ -13,7 +13,7 @@ import java.util.Random;
 
 /**
  * Screensaver (DreamService): StandBy OLED Nightstand Screensaver with large 110sp digits,
- * Gregorian date, Islamic Hijri date, next prayer countdown capsule, and subtle
+ * Gregorian date and subtle
  * drift to prevent OLED burn-in over long sessions.
  *
  * <p>Between 10:00 PM and 6:00 AM, automatically shifts to iPhone StandBy Wind Down
@@ -31,8 +31,6 @@ public class ClockDream extends DreamService {
     private TextView clock;
     private TextView ampm;
     private TextView date;
-    private TextView hijri;
-    private TextView prayer;
     private TextView hint;
     private long dreamStartTime = 0;
 
@@ -72,8 +70,6 @@ public class ClockDream extends DreamService {
         clock = findViewById(R.id.nightstandClock);
         ampm = findViewById(R.id.nightstandAmPm);
         date = findViewById(R.id.nightstandDate);
-        hijri = findViewById(R.id.nightstandHijri);
-        prayer = findViewById(R.id.nightstandPrayer);
         hint = findViewById(R.id.nightstandHint);
 
         updateNightstand();
@@ -111,14 +107,6 @@ public class ClockDream extends DreamService {
     private void updateNightstand() {
         if (content == null) return;
 
-        if (hijri != null) {
-            hijri.setText("🌙 " + PrayerTimes.getHijriDate());
-        }
-
-        if (prayer != null) {
-            prayer.setText("🕌 " + PrayerTimes.getNextPrayerSummary(this));
-        }
-
         float density = getResources().getDisplayMetrics().density;
 
         // StandBy Wind Down Mode: 10:00 PM (22:00) to 6:00 AM (06:00) -> Red Monochrome
@@ -131,26 +119,11 @@ public class ClockDream extends DreamService {
             if (clock != null) clock.setTextColor(red);
             if (ampm != null) ampm.setTextColor(0xCCFF453A);
             if (date != null) date.setTextColor(0xE6FF453A);
-            if (hijri != null) hijri.setTextColor(0xE6FF453A);
-            if (prayer != null) {
-                prayer.setTextColor(red);
-                GradientDrawable redPill = new GradientDrawable();
-                redPill.setShape(GradientDrawable.RECTANGLE);
-                redPill.setColor(0x26FF453A);
-                redPill.setStroke((int) (1 * density), 0x59FF453A);
-                redPill.setCornerRadius(21 * density);
-                prayer.setBackground(redPill);
-            }
             if (hint != null) hint.setTextColor(0x55FF453A);
         } else {
             if (clock != null) clock.setTextColor(0xFFFFFFFF);
             if (ampm != null) ampm.setTextColor(0xB3FFFFFF);
             if (date != null) date.setTextColor(0xE6FFFFFF);
-            if (hijri != null) hijri.setTextColor(0xD9E6E0D2);
-            if (prayer != null) {
-                prayer.setTextColor(0xFFFFFFFF);
-                prayer.setBackgroundResource(R.drawable.pill_bg);
-            }
             if (hint != null) hint.setTextColor(0x4DFFFFFF);
         }
     }

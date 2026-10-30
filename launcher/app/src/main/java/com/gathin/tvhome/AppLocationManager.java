@@ -273,9 +273,8 @@ public class AppLocationManager {
 
         Log.i(TAG, "Location set to: " + locationName + " (" + country + ") [" + lat + ", " + lon + "]");
 
-        // Trigger immediate sync for Weather & Prayer Times
+        // Trigger an immediate weather and air-quality refresh for the new location.
         WeatherAirQuality.sync(context, null);
-        PrayerTimes.sync(context, null);
     }
 
     public static Station findStationByQuery(String query) {
