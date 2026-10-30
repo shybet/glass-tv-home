@@ -220,7 +220,7 @@ Users who install the APK manually or relocate **DO NOT NEED A COMPUTER OR AI** 
   - **Rotate All Photos**: Choose **`🔄 Rotate All Uploaded Photos`** to cycle through all custom photos in slideshow mode.
   - **Delete Specific / Clear All**: Delete individual uploaded photos or wipe all custom images with one click.
 * **🖼️ Clean View for Custom Wallpapers**:
-  - When personal custom wallpapers are active, the left-hand text shelf / description is completely hidden (`View.GONE`) so your personal photos are displayed edge-to-edge without being obscured by location captions.
+  - Wallpaper title, location, and description captions are hidden on the Home screen for every wallpaper category.
 * **Instant Shift**: Select **🔀 Next Wallpaper** anytime to immediately cycle to the next photo in your active category.
 
 ### C. StandBy Ambient Mode & Smart Power Saving
@@ -233,27 +233,14 @@ Clicking the **Settings (gear icon ⚙️)** on the top bar reveals an Apple tvO
 * 🖼️ **Wallpaper**: Launches the category selector dialog (*Natural, Skyscraper, Deep Space, Ocean, Minimalist Dark, Next Wallpaper*). Preferences persist across reboots.
 * 📍 **Location API Haze**: Opens a selector for 30+ official Malaysian DOE (JAS APIMS) air quality monitoring stations.
 * 📍 **Weather Location**: Opens a region and city selector used by local weather and air-quality services.
-* 🔊 **Sound Effect**: Displays current audio theme (e.g. `Sound: PlayStation 5`) and launches the console sound profile selector with live previews.
-* 🔄 **Check for Updates**: Checks GitHub directly for newer releases or patches without requiring a PC.
 * ⚙️ **All Settings**: Opens standard Android TV system preferences.
 *(Shortcut: Long-pressing the Settings button on your remote directly launches standard Android settings).*
 
-### E. Console Sound Effects & Mute Mode (PS5, Switch, Xbox) 🎮🔊
-Customize your TV navigation audio with iconic gaming console profiles or mute all sounds entirely:
-* **PlayStation 5 (Default)**: Sleek, high-definition acoustic whooshes and tactile clicks.
-* **Nintendo Switch**: Sharp mechanical tactile clicks and cheerful confirmation snaps.
-* **Xbox Series X/S**: Resonant warm mid-bass navigation pulses and two-tone rising chime.
-* **Muted / Off**: Complete silence for whisper-quiet late night movie sessions.
-* **Instant Audio Audition**: Tapping any theme inside the dialog immediately plays its signature chime.
-* **Persistent Preferences**: Settings remain saved across TV restarts via SharedPreferences.
+### E. Navigation Sound Feedback
+Subtle navigation sounds remain built in with a fixed profile. Sound-theme selection and mute controls are no longer exposed in launcher settings.
 
-### F. On-TV OTA Updates & Auto-Patch Checker 🔄🚀
-Glass TV Home features a built-in OTA update system so you can update directly on your TV without a computer:
-* **Manual Check**: Navigate to **Settings (⚙️) $\rightarrow$ Check for Updates**. The app contacts the GitHub release manifest and notifies you if a new version is available.
-* **Silent Startup Check**: The launcher quietly checks for new versions in the background when booted. If a new patch is found, a changelog dialog is presented.
-* **1-Click Download & Install**: Clicking **Muat Turun & Pasang** downloads the update file locally and launches Android TV's native package installer.
-* **Data Preserved**: Updating preserves all apps, dock layout, and custom configurations.
-
+### F. Background OTA Updates 🔄🚀
+Glass TV Home checks for new releases silently at startup. If an update is available, it presents a changelog and an install prompt. There is no user-facing Auto-Update setting; installing an update preserves apps, dock layout, and custom configurations.
 ---
 
 ## 📲 5. Mobile Phone Setup (Without Any PC / Laptop)

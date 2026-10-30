@@ -827,6 +827,9 @@ public class MainActivity extends Activity implements AppAdapter.TileListener {
                     .build(), vpnCallback);
         }
 
+        // Background OTA check remains automatic; its former settings control is removed.
+        handler.postDelayed(() -> AppUpdateManager.checkForUpdates(this, false), 5000);
+
         if (getIntent() != null && getIntent().getBooleanExtra("open_settings", false)) {
             handler.postDelayed(() -> {
                 if (screensaverActive) dismissScreensaver();

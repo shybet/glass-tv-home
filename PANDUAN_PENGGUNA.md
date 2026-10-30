@@ -236,27 +236,14 @@ Di bar atas skrin utama, tekan butang **Settings (ikon gear ⚙️)** untuk mema
 * 🖼️ **Wallpaper**: Membuka tetingkap pilihan kategori wallpaper (*Natural, Skyscraper, Deep Space, Ocean, Minimalist Dark, Next Wallpaper*). Pilihan anda disimpan secara kekal walaupun TV dimatikan.
 * 📍 **Location API Haze**: Membuka senarai 30+ stesen jerebu rasmi JAS APIMS untuk menukar stesen pemantauan udara di seluruh negeri.
 * 📍 **Lokasi Cuaca**: Membuka pemilih wilayah dan bandar untuk perkhidmatan cuaca serta kualiti udara.
-* 🔊 **Sound Effect**: Memaparkan tema bunyi aktif (cth: `Sound: PlayStation 5`) dan membuka dialog pilihan tema audio konsol (PS5, Nintendo Switch, Xbox Series X/S, atau Bisu/Off) dengan pratonton nada serta-merta.
-* 🔄 **Check for Updates**: Menyemak patch atau versi kemas kini baharu secara terus dari GitHub tanpa memerlukan komputer.
 * ⚙️ **All Settings**: Membuka menu tetapan penuh Android TV OS.
 *(Pintasan: Menekan lama butang Settings pada remote juga akan membuka tetapan Android secara langsung).*
 
-### E. Pilihan Bunyi Konsol & Suis Bisu (Sound Effects) 🎮🔊
-Kini anda boleh memilih tema kesan bunyi navigasi ala konsol permainan kegemaran anda atau mematikannya sepenuhnya:
-* **PlayStation 5 (Default)**: Bunyi pergerakan dan klik ikonik konsol PS5 generasi terkini yang moden, lembut, dan kemas.
-* **Nintendo Switch**: Bunyi klik mekanikal tactile dan 'snap' ceria yang sangat responsif setiap kali butang ditekan.
-* **Xbox Series X/S**: Bunyi 'blip' elektronik akustik lembut dengan nada dwi-harmonik moden yang tenang.
-* **Muted / Off (Bisu)**: Matikan semua kesan bunyi navigasi jika anda lebih gemar suasana senyap sunyi di waktu malam.
-* **Pratonton Bunyi Segera**: Setiap kali anda klik pilihan di dalam dialog, sistem akan memainkan bunyi pilihan tersebut serta-merta sebagai sampel.
-* **Kekal Tersimpan**: Pilihan anda disimpan secara kekal dalam memori TV dan tidak hilang walaupun TV ditutup atau dihidupkan semula.
+### E. Bunyi Navigasi
+Bunyi maklum balas navigasi yang ringkas kekal tersedia dengan profil tetap. Pilihan tema bunyi dan kawalan bisu tidak lagi ditampilkan dalam pengaturan launcher.
 
-### F. Semakan & Auto-Update Terus Dari TV (In-App OTA Updater) 🔄🚀
-Glass TV Home dilengkapi dengan enjin kemas kini pintar tanpa perlu komputer atau bantuan luaran:
-* **Semakan Manual**: Tekan **Settings (⚙️) $\rightarrow$ Check for Updates**. Sistem akan terus berhubung dengan pelayan GitHub untuk memeriksa sama ada terdapat versi terkini.
-* **Semakan Automatik Latar Belakang**: Setiap kali aplikasi Glass TV dibuka, ia akan memeriksa secara senyap di latar belakang. Jika versi baharu ditemui, dialog kemas kini dengan senarai pembaharuan (*changelog*) akan dipaparkan.
-* **Muat Turun & Pasang 1-Klik**: Klik butang **Muat Turun & Pasang**, TV akan memuat turun fail APK terus ke peranti dan membuka pemasang rasmi Android TV untuk anda sahkan dengan remote.
-* **Selamat & Kekal**: Proses kemas kini tidak memadamkan fail data, susunan aplikasi, atau tetapan peribadi anda.
-
+### F. Kemas Kini OTA Latar Belakang 🔄🚀
+Glass TV Home menyemak versi baharu secara senyap ketika aplikasi dimulakan. Jika kemas kini tersedia, aplikasi memaparkan changelog dan arahan pemasangan. Tiada lagi pengaturan Auto-Update yang boleh diubah pengguna; pemasangan kemas kini tidak memadam data atau susunan aplikasi.
 ---
 
 ## 📱 5. Cara Buat Guna Telefon Pintar (Tanpa Komputer / Laptop Langsung!)

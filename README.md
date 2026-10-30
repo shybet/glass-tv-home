@@ -25,7 +25,7 @@ and come home to just your apps, with a new place to visit behind them every wee
 >
 > 📖 **User Guides / Panduan Pengguna**:
 > - 🇬🇧 **English User Guide**: Complete beginner walkthrough, 1-line AI setup, remote navigation, phone setup & FAQ in [USER_GUIDE.md](USER_GUIDE.md).
-> - 🇲🇾 **Panduan Bahasa Melayu**: Panduan lengkap langkah demi langkah untuk pengguna baru di [PANDUAN_PENGGUNA.md](PANDUAN_PENGGUNA.md).
+> - 🇮🇩 **Panduan Bahasa Indonesia**: Panduan lengkap langkah demi langkah untuk pengguna baru di [PANDUAN_PENGGUNA.md](PANDUAN_PENGGUNA.md).
 
 Glass TV debloats any Android TV or Google TV over Wi-Fi, with no root and nothing that can't be undone, then
 swaps the ad-filled home screen for a light one in frosted glass, with a new set of places behind your apps
@@ -57,21 +57,13 @@ every week.
 - **Frosted Glass Settings Dropdown & 4K Wallpaper Categories.**
   - **Floating Glass Dropdown**: Clicking the top Settings icon (`⚙️`) opens a native Apple tvOS-style glass menu under the button.
   - **Dynamic 4K Wallpaper Switcher**: Switch themes on the fly between *Natural*, *🇲🇾 Malaysia (Koleksi 14 Negeri & Wilayah)*, *Skyscraper* (KLCC, Manhattan, Chicago, Dubai, HK), *Deep Space*, *Ocean & Coastal*, *Minimalist Dark*, or trigger *Next Wallpaper*.
-  - **🇲🇾 Malaysia 14 States Sub-Dropdown**: Dedicated sub-dialog to choose wallpapers specifically for any of Malaysia's 14 states (Johor, Kedah, Kelantan, Melaka, Negeri Sembilan, Pahang, Perak, Perlis, Pulau Pinang, Sabah, Sarawak, Selangor, Terengganu, Wilayah Persekutuan) or rotate all states together.
   - **Weather Location & Haze Station Selectors**: Choose a region and city for local weather, then select from supported DOE (JAS APIMS) air-quality stations without needing a computer or AI.
   - **All Settings Shortcut**: Access standard Android TV settings in one click (or by long-pressing Settings).
 - **Phone QR Wallpaper Upload & Gallery Manager (Phone-to-TV).**
   - **Instant QR Code Wi-Fi Upload**: Scan the QR code on TV with any phone to open a frosted glass web uploader. Send personal high-res wallpapers straight to TV with zero third-party cloud apps.
   - **Full Mobile & TV Photo Manager**: Manage uploaded wallpapers directly on mobile or TV with remote D-pad. Lock a single picture as permanent wallpaper (`📌 Single Mode`), switch back to rotating slideshow (`🔄 Putar Semua`), or delete unwanted pictures (`🗑️`).
-  - **Clean View for Custom Wallpapers**: Description/hero text shelf is automatically hidden (`View.GONE`) for custom wallpapers so personal photos remain 100% unobstructed.
-- **Console Sound Effects & Mute Toggle (PS5, Nintendo Switch, Xbox).**
-  - **3 Iconic Console Profiles**: Choose your favorite sound profile from the Settings menu (`⚙️`):
-    - **PlayStation 5**: Futuristic soft swooshes and acoustic tactile clicks.
-    - **Nintendo Switch**: Crisp mechanical snap and bright affirmative chime.
-    - **Xbox Series X/S**: Resonant warm mid-bass navigation blips and two-tone modern rising chime.
-  - **Mute / Silent Mode (`Off`)**: Toggle sound effects completely off for a whisper-quiet late-night browsing experience.
-  - **Live Audition**: Plays instant sound previews upon selecting an option in the dialog.
-  - **Persistent Memory**: Saved across reboots and app launches via TV shared preferences.
+  - **Clean View for Custom Wallpapers**: Wallpaper title, location, and description captions are hidden on the Home screen for every wallpaper category.
+- **Built-in Navigation Sounds**: Subtle interface feedback remains enabled with a fixed profile; no sound-theme setting is exposed.
 - **OTA In-App Auto Update & 1-Line AI Patching.**
   - **In-App OTA Check (`⚙️ Check for Updates`)**: Check, download, and install latest APK patches directly on the TV without a PC.
   - **Background Launch Check**: Glass TV silently checks for new releases on startup and prompts when a new update is ready to install.
@@ -165,7 +157,7 @@ update patch latest glass tv dekat tv rumah saya: https://github.com/aqmangge/gl
 
 > 📖 **Read the Beginner User Guides**:
 > - 🇬🇧 **[USER_GUIDE.md](USER_GUIDE.md)**: Full English step-by-step guide (Developer Mode, AI prompts, manual station selector, iPhone & Android setups, FAQ).
-> - 🇲🇾 **[PANDUAN_PENGGUNA.md](PANDUAN_PENGGUNA.md)**: Panduan penuh Bahasa Melayu untuk pengguna baru (aktifkan Developer Mode, arahan AI, tukar stesen manual remote TV, telefon pintar & FAQ).
+> - 🇮🇩 **[PANDUAN_PENGGUNA.md](PANDUAN_PENGGUNA.md)**: Panduan penuh Bahasa Indonesia untuk pengguna baru (aktifkan Developer Mode, arahan AI, tukar stesen manual remote TV, telefon pintar & FAQ).
 
 The full step-by-step guide for debloating and installing is in
 [docs/CLEANYOURTV-README.md](docs/CLEANYOURTV-README.md), and [PROMPT.md](PROMPT.md) lets a coding assistant do
