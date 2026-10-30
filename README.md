@@ -62,12 +62,9 @@ every week.
 - **Phone QR Wallpaper Upload & Gallery Manager (Phone-to-TV).**
   - **Instant QR Code Wi-Fi Upload**: Scan the QR code on TV with any phone to open a frosted glass web uploader. Send personal high-res wallpapers straight to TV with zero third-party cloud apps.
   - **Full Mobile & TV Photo Manager**: Manage uploaded wallpapers directly on mobile or TV with remote D-pad. Lock a single picture as permanent wallpaper (`📌 Single Mode`), switch back to rotating slideshow (`🔄 Putar Semua`), or delete unwanted pictures (`🗑️`).
-  - **Clean View for Custom Wallpapers**: Wallpaper title, location, and description captions are hidden on the Home screen for every wallpaper category.
+  - **Clean Home Screen**: Wallpaper title, location, and description captions are hidden on the Home screen for every wallpaper category.
 - **Built-in Navigation Sounds**: Subtle interface feedback remains enabled with a fixed profile; no sound-theme setting is exposed.
-- **OTA In-App Auto Update & 1-Line AI Patching.**
-  - **In-App OTA Check (`⚙️ Check for Updates`)**: Check, download, and install latest APK patches directly on the TV without a PC.
-  - **Background Launch Check**: Glass TV silently checks for new releases on startup and prompts when a new update is ready to install.
-  - **1-Line AI Update Prompt**: Paste `update patch latest glass tv dekat tv rumah saya: https://github.com/aqmangge/glass-tv-home` to any AI coding assistant to upgrade via ADB in 5 seconds without touching existing user data.
+- **Background OTA Check**: Glass TV checks for new releases on startup and prompts when an update is ready; no user-facing Auto-Update setting is available.
 
 - **Keeps itself clean.** Every 15 days, while Home sits idle, the TV clears its app caches, where the Play
   Store leaves gigabytes of download leftovers that can make apps open to a blank screen. No computer needed,
