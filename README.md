@@ -34,7 +34,6 @@ every week.
 <p align="center">
   <img src="docs/screenshots/home-live.png" width="19%" alt="Live Home Screen">
   <img src="docs/screenshots/weather-live.png" width="19%" alt="Apple Weather Bento Dashboard">
-  <img src="docs/screenshots/azan-popup-live.png" width="19%" alt="16:9 Azan Floating Settings">
   <img src="docs/screenshots/screensaver-live.png" width="19%" alt="StandBy Screensaver">
   <img src="docs/screenshots/wallpaper-dialog-live.png" width="19%" alt="4K Wallpapers & Phone QR Upload">
 </p>
@@ -52,17 +51,14 @@ every week.
   - Current condition, apparent temperature, humidity, wind velocity, UV index, sunrise and sunset times.
   - Air Quality Index (AQI / API / IPU) from Malaysia's Jabatan Alam Sekitar (APIMS) with a multi-color spectrum gauge, station comparisons, PM2.5 / PM10 readings, and health advisories.
   - Next 12 Hours hourly forecast pills and 7-day daily forecast cards with precipitation probabilities.
-- **Islamic Prayer Timetable & Daily Ayat.** A mindful cultural shelf:
-  - 6-phase timetable (Subuh, Syuruk, Zohor, Asar, Maghrib, Isyak) with emerald highlighting for the active prayer window.
-  - Daily Quranic Ayat of the Day with Arabic calligraphy and translations.
 - **StandBy Ambient Mode & Smart Energy Lifecycle.**
-  - **10 Minutes Idle**: Automatically engages an ambient StandBy screensaver with large 110sp numerals, Islamic Hijri calendar, next prayer capsule, and a late-night red monochrome wind-down mode.
+  - **10 Minutes Idle**: Automatically engages an ambient StandBy screensaver with large 110sp numerals, Gregorian date, and a late-night red monochrome wind-down mode.
   - **2 Hours Later**: Automatically turns off the TV display into deep sleep standby via Android's Accessibility Service (`GLOBAL_ACTION_LOCK_SCREEN`).
 - **Frosted Glass Settings Dropdown & 4K Wallpaper Categories.**
   - **Floating Glass Dropdown**: Clicking the top Settings icon (`⚙️`) opens a native Apple tvOS-style glass menu under the button.
   - **Dynamic 4K Wallpaper Switcher**: Switch themes on the fly between *Natural*, *🇲🇾 Malaysia (Koleksi 14 Negeri & Wilayah)*, *Skyscraper* (KLCC, Manhattan, Chicago, Dubai, HK), *Deep Space*, *Ocean & Coastal*, *Minimalist Dark*, or trigger *Next Wallpaper*.
   - **🇲🇾 Malaysia 14 States Sub-Dropdown**: Dedicated sub-dialog to choose wallpapers specifically for any of Malaysia's 14 states (Johor, Kedah, Kelantan, Melaka, Negeri Sembilan, Pahang, Perak, Perlis, Pulau Pinang, Sabah, Sarawak, Selangor, Terengganu, Wilayah Persekutuan) or rotate all states together.
-  - **Built-in Haze & Prayer Zone Selectors**: Select from 30+ Malaysian DOE (JAS APIMS) air quality stations and 35+ official JAKIM prayer zones without needing a computer or AI.
+  - **Weather Location & Haze Station Selectors**: Choose a region and city for local weather, then select from supported DOE (JAS APIMS) air-quality stations without needing a computer or AI.
   - **All Settings Shortcut**: Access standard Android TV settings in one click (or by long-pressing Settings).
 - **Phone QR Wallpaper Upload & Gallery Manager (Phone-to-TV).**
   - **Instant QR Code Wi-Fi Upload**: Scan the QR code on TV with any phone to open a frosted glass web uploader. Send personal high-res wallpapers straight to TV with zero third-party cloud apps.
@@ -105,7 +101,7 @@ every week.
   goes to the first app. When Android has closed Home to free memory, it comes back whole in one frame,
   with no black screen and no half-built dock.
 - **A StandBy clock screensaver.** A sleek, high-contrast OLED digital nightstand clock with 110sp digits,
-  Islamic Hijri calendar, next prayer countdown capsule, and gentle minute-by-minute drift to prevent burn-in.
+  Gregorian date and gentle minute-by-minute drift to prevent burn-in.
 - **Rows feather out under the top bar** instead of being cut off when you scroll, and the Wi-Fi / Ethernet
   button can be hidden (`show_network_pill`).
 - **Rotating wallpapers of your own** instead, with `"places": false`: put pictures in a theme's `wallpapers/`
@@ -116,7 +112,7 @@ every week.
 |---|---|
 | ![Home with Masjid Negeri Shah Alam, Selangor, story caption and glass dock](docs/screenshots/home.jpg) | ![The app grid scrolled down over the wallpaper, rows feathering out under the top bar](docs/screenshots/grid.jpg) |
 | *Home, with this week's place* | *Every app, feathering out under the top bar* |
-| ![The glass menu and quick controls over Jambatan Angkat Terengganu](docs/screenshots/inputs.jpg) | ![The StandBy clock screensaver with large 110sp digits, Hijri date, and prayer countdown](docs/screenshots/clock.jpg) |
+| ![The glass menu and quick controls over Jambatan Angkat Terengganu](docs/screenshots/inputs.jpg) | ![The StandBy clock screensaver with large 110sp digits and Gregorian date](docs/screenshots/screensaver-live.png) |
 | *Inputs, in glass* | *The StandBy clock screensaver* |
 
 Still light: on a Xiaomi Mi TV with 1.8 GB of RAM the launcher uses about 80–100 MB and stays there over hours
@@ -166,7 +162,7 @@ update patch latest glass tv dekat tv rumah saya: https://github.com/aqmangge/gl
 > 4. All personal wallpapers, dock orders, and settings are 100% retained!
 
 > 🚨 **AI Assistant Rule / Arahan Khas AI**:
-> When installing for a user, the AI **must ask the user for their location in Malaysia** (e.g. Putrajaya, Cheras, Shah Alam, Melaka, JB, Penang, Kuantan, Kuching, KK) to configure live JAS haze/IPU data and JAKIM prayer times via:
+> When installing for a user, the AI **must ask the user for their location in Malaysia** (e.g. Putrajaya, Cheras, Shah Alam, Melaka, JB, Penang, Kuantan, Kuching, KK) to configure local JAS haze/IPU and weather location via:
 > ```bash
 > adb shell am broadcast -a com.gathin.tvhome.SET_LOCATION -p com.gathin.tvhome --es query "<LOCATION>"
 > ```

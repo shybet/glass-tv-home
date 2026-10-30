@@ -9,7 +9,6 @@ Selamat datang ke **Glass TV Home**! Panduan ini khas untuk pengguna baru (*begi
 Glass TV Home ialah pengganti skrin utama (*launcher*) untuk Android TV dan Google TV (seperti Xiaomi Mi Box S, Mi TV Stick, Android TV Sharp, Sony, TCL, Philips, Mecool dsb):
 * 🚀 **Tiada Iklan & Sangat Ringan**: Hanya bersaiz ~453 KB, lancar dan tidak membebankan TV (menjimatkan lebih 400 MB RAM berbanding skrin asal).
 * 🪟 **Gaya Kaca Frosted (tvOS)**: Rekaan moden seperti Apple TV dengan bayang kaca terapung dan susunan aplikasi yang kemas.
-* 🕌 **Waktu Solat & Ayat Harian**: Jadual 6 waktu solat Malaysia secara automatik dengan ayat al-Quran pilihan harian.
 * ⛅ **Dashboard Cuaca & Jerebu (API)**: Semakan suhu semasa, ramalan 12 jam, 7 hari, serta indeks pencemaran udara rasmi (APIMS Jabatan Alam Sekitar).
 * 🌙 **Screensaver Pintar & Jimat Elektrik**: Masuk screensaver selepas 10 minit rehat, dan TV padam automatik (*sleep standby*) selepas 2 jam.
 
@@ -21,7 +20,7 @@ Sila muat turun fail pemasangan rasmi mengikut peranti anda:
 * 📱 **Untuk Telefon / Tablet Android (Aplikasi Pembantu Pemasangan)**:  
   [**`glass-tv-installer.apk`** (5.2 MB)](https://github.com/aqmangge/glass-tv-home/raw/main/release/glass-tv-installer.apk) — **Pilihan Utama!** Pasang terus ke TV melalui Wi-Fi tanpa perlukan komputer (PC) atau kabel.
 * 📺 **Untuk Android TV / Google TV (Launcher Utama)**:  
-  [**`glass-tv-home.apk`** (730 KB)](https://github.com/aqmangge/glass-tv-home/raw/main/release/glass-tv-home.apk) — Versi terkini `v3.1.4` (Keluaran stabil, cuaca bento APIMS, waktu solat automatik, RAM cleaner 2-klik, DuitNow Belanja Kopi).
+  [**`glass-tv-home.apk`** (730 KB)](https://github.com/aqmangge/glass-tv-home/raw/main/release/glass-tv-home.apk) — Versi terkini `v3.1.4` (Keluaran stabil, cuaca bento APIMS, lokasi cuaca, RAM cleaner 2-klik, DuitNow Belanja Kopi).
 
 > [!NOTE]
 > ### 🇲🇾 Pengguna Unifi TV Box (TM Unifi Plus Box): Adakah Boleh Guna & Adakah Batal Waranti?
@@ -187,14 +186,14 @@ Pengguna yang memasang fail APK secara manual atau berpindah rumah **TIDAK PERLU
 3. Tekan **OK**. Menu pilihan senarai stesen rasmi JAS Malaysia akan muncul:
    - *Putrajaya, Cheras (KL), Batu Muda (KL), Petaling Jaya, Shah Alam, Klang, Banting, Bandaraya Melaka, Alor Gajah, Bukit Rambai, Seremban, Nilai, Port Dickson, Larkin (JB), Pasir Gudang, Batu Pahat, Kluang, Tangkak, Seberang Jaya (Penang), Minden (USM), Balik Pulau, Ipoh, Taiping, Seri Manjung, Alor Setar, Sungai Petani, Langkawi, Kangar, Kuantan, Temerloh, Kuala Terengganu, Kemaman, Kota Bharu, Kota Kinabalu, Sandakan, Tawau, Kuching, Miri, Bintulu, Sibu, Labuan*.
 4. Gunakan butang **Atas / Bawah** remote untuk memilih stesen anda, lalu tekan **OK**.
-5. Serta-merta bacaan Indeks Pencemaran Udara (JAS IPU) dan zon waktu solat (JAKIM) akan dikemaskini mengikut bandar pilihan anda!
+5. Lokasi cuaca dan bacaan Indeks Pencemaran Udara (JAS IPU) akan dikemaskini mengikut bandar pilihan anda!
 
 ### B. Waktu Solat & Ayat Al-Quran Harian
 * **Jadual Solat 6 Waktu**: Subuh, Syuruk, Zohor, Asar, Maghrib, Isyak mengikut zon waktu Malaysia secara tepat.
 * **Warna Hijau Zamrud**: Waktu solat yang sedang berlangsung akan automatik bertukar warna hijau terang supaya anda sentiasa peka waktu ibadah.
 * **Ayat Al-Quran Pilihan**: Ayat al-Quran harian berserta teks Arab yang indah dan terjemahan maksud.
 
-### C. Gambar Latar Belakang & Pilihan Kategori Wallpaper (4K Dynamic)
+### B. Gambar Latar Belakang & Pilihan Kategori Wallpaper (4K Dynamic)
 * **Koleksi Tema Pelbagai**: Kini anda boleh memilih kategori tema wallpaper kegemaran anda secara langsung dari skrin utama melalui menu Tetapan (ikon ⚙️):
   - 🌿 **Natural (Lalai / Bing Places)**: Landskap alam semula jadi bertaraf 4K dengan info nama lokasi, negara, dan penerangan ringkas setiap minggu.
   - 🇲🇾 **Malaysia (Koleksi Mengikut Setiap Negeri)**: Pilih koleksi mengikut mana-mana 14 negeri di Malaysia atau putar semua sekali gus melalui sub-dialog khas:
@@ -232,7 +231,7 @@ Pengguna yang memasang fail APK secara manual atau berpindah rumah **TIDAK PERLU
   - Apabila menggunakan wallpaper sendiri (*custom*), rak teks deskripsi di sebelah kiri skrin dimatikan sepenuhnya (`View.GONE`) supaya gambar anda dipaparkan dengan jelas tanpa terlindung.
 * **Tukar Gambar Serta-Merta**: Pilih **🔀 Next Wallpaper** untuk beralih ke gambar seterusnya pada bila-bila masa.
 
-### D. Screensaver StandBy & Auto-Off 2 Jam (Jimat Elektrik)
+### C. Screensaver StandBy & Auto-Off 2 Jam (Jimat Elektrik)
 * **10 Minit Dibiarkan Tanpa Butang**: TV akan automatik masuk mod *StandBy Screensaver* berlatar hitam pekat (selamat untuk mengelakkan *screen burn-in* pada TV OLED/LED), memaparkan jam besar 110sp, tarikh Hijriah (cth: `🌙 12 Jamadilawal 1448H`), dan solat seterusnya.
 * **2 Jam Selepas Itu**: Jika TV terus tidak disentuh, sistem akan mematikan paparan TV (*sleep standby*) secara automatik.
 * **Untuk Hidupkan Semula**: Tekan mana-mana butang pada remote untuk bangunkan TV.
@@ -246,17 +245,17 @@ Ciri rohani eksklusif untuk kediaman Muslim pintar yang disegerakkan secara lang
   3. **C. Pilihan Bunyi Azan**: Pilih antara audio azan penuh yang merdu: *Masjid As-Syakirin KLCC, Makkah Mukarramah, atau Madinah Munawwarah*.
   4. **D. Uji Popup Azan Serta-Merta**: Tekan butang **▶️ Uji Popup Azan Sekarang** untuk mencetuskan pratonton kad terapung dan memeriksa kelantangan audio dengan 1 klik.
 
-### F. Menu Tetapan Frosted Glass (Settings Dropdown Menu) ⚙️
+### D. Menu Tetapan Frosted Glass (Settings Dropdown Menu) ⚙️
 Di bar atas skrin utama, tekan butang **Settings (ikon gear ⚙️)** untuk memaparkan menu terapung gaya kaca Apple tvOS:
 * 🖼️ **Wallpaper**: Membuka tetingkap pilihan kategori wallpaper (*Natural, Skyscraper, Deep Space, Ocean, Minimalist Dark, Next Wallpaper*). Pilihan anda disimpan secara kekal walaupun TV dimatikan.
 * 📍 **Location API Haze**: Membuka senarai 30+ stesen jerebu rasmi JAS APIMS untuk menukar stesen pemantauan udara di seluruh negeri.
-* 🕌 **Location Waktu Solat**: Membuka senarai 35+ zon rasmi JAKIM untuk menyelaraskan jadual solat secara tepat mengikut daerah anda.
+* 📍 **Lokasi Cuaca**: Membuka pemilih wilayah dan bandar untuk perkhidmatan cuaca serta kualiti udara.
 * 🔊 **Sound Effect**: Memaparkan tema bunyi aktif (cth: `Sound: PlayStation 5`) dan membuka dialog pilihan tema audio konsol (PS5, Nintendo Switch, Xbox Series X/S, atau Bisu/Off) dengan pratonton nada serta-merta.
 * 🔄 **Check for Updates**: Menyemak patch atau versi kemas kini baharu secara terus dari GitHub tanpa memerlukan komputer.
 * ⚙️ **All Settings**: Membuka menu tetapan penuh Android TV OS.
 *(Pintasan: Menekan lama butang Settings pada remote juga akan membuka tetapan Android secara langsung).*
 
-### G. Pilihan Bunyi Konsol & Suis Bisu (Sound Effects) 🎮🔊
+### E. Pilihan Bunyi Konsol & Suis Bisu (Sound Effects) 🎮🔊
 Kini anda boleh memilih tema kesan bunyi navigasi ala konsol permainan kegemaran anda atau mematikannya sepenuhnya:
 * **PlayStation 5 (Default)**: Bunyi pergerakan dan klik ikonik konsol PS5 generasi terkini yang moden, lembut, dan kemas.
 * **Nintendo Switch**: Bunyi klik mekanikal tactile dan 'snap' ceria yang sangat responsif setiap kali butang ditekan.
@@ -265,7 +264,7 @@ Kini anda boleh memilih tema kesan bunyi navigasi ala konsol permainan kegemaran
 * **Pratonton Bunyi Segera**: Setiap kali anda klik pilihan di dalam dialog, sistem akan memainkan bunyi pilihan tersebut serta-merta sebagai sampel.
 * **Kekal Tersimpan**: Pilihan anda disimpan secara kekal dalam memori TV dan tidak hilang walaupun TV ditutup atau dihidupkan semula.
 
-### H. Semakan & Auto-Update Terus Dari TV (In-App OTA Updater) 🔄🚀
+### F. Semakan & Auto-Update Terus Dari TV (In-App OTA Updater) 🔄🚀
 Glass TV Home dilengkapi dengan enjin kemas kini pintar tanpa perlu komputer atau bantuan luaran:
 * **Semakan Manual**: Tekan **Settings (⚙️) $\rightarrow$ Check for Updates**. Sistem akan terus berhubung dengan pelayan GitHub untuk memeriksa sama ada terdapat versi terkini.
 * **Semakan Automatik Latar Belakang**: Setiap kali aplikasi Glass TV dibuka, ia akan memeriksa secara senyap di latar belakang. Jika versi baharu ditemui, dialog kemas kini dengan senarai pembaharuan (*changelog*) akan dipaparkan.
@@ -425,7 +424,7 @@ Jika anda lebih suka menggunakan pendrive USB:
 * Glass TV Home dibina sebagai aplikasi Android TV asli (*Native Android TV app*).
 * Sebaik sahaja fail APK terpasang pada TV:
   - **Remote TV berfungsi sepenuhnya**: Butang D-Pad (Atas/Bawah/Kiri/Kanan/OK) untuk kawal aplikasi dan cuaca, serta butang Home/Back berfungsi seperti biasa.
-  - **Semua ciri automatik berjalan sendiri**: Jam, jadual waktu solat, cuaca & kualiti udara (APIMS), mod screensaver 10 minit, dan auto-sleep 2 jam dijana sepenuhnya oleh cip pemproses TV tanpa bergantung kepada mana-mana AI atau internet luar.
+  - **Semua ciri automatik berjalan sendiri**: Jam, tarikh Gregorian, cuaca & kualiti udara (APIMS), mod screensaver 10 minit, dan auto-sleep 2 jam dijana sepenuhnya oleh cip pemproses TV tanpa bergantung kepada mana-mana AI atau internet luar.
   - Ahli keluarga dan pengguna biasa boleh menikmati TV dengan lancar hanya menggunakan remote TV biasa.
 * **Peranan AI hanyalah seperti "jurutera"** yang membantu memasang dan mencuci bloatware pada peringkat permulaan sahaja.
 

@@ -8,7 +8,7 @@ before you improvise a fix.
 > ⚡ **Quick 1-Line User Trigger**:
 > When a user prompts you with:
 > `install ni dekat tv rumah saya: https://github.com/aqmangge/glass-tv-home`
-> (or `install this on my home tv: https://github.com/aqmangge/glass-tv-home`), they want you to automate the full deployment. Ask for their TV IP (if not auto-discovered) and their location in Malaysia (e.g. Putrajaya, Cheras, Shah Alam, Melaka, JB, Penang, Kuantan, Kuching, KK). Then connect over ADB, backup, debloat, install the prebuilt APK from `release/glass-tv-home.apk` (or build), configure the haze & prayer zone broadcast, and verify with a screenshot.
+> (or `install this on my home tv: https://github.com/aqmangge/glass-tv-home`), they want you to automate the full deployment. Ask for their TV IP (if not auto-discovered) and their city or region for local weather and air quality. Then connect over ADB, back up, debloat, install the prebuilt APK from `release/glass-tv-home.apk` (or build), configure the weather location, and verify with a screenshot.
 
 ## First: check the model, before anything else
 
@@ -209,9 +209,9 @@ A theme is a folder with `config.json` (and optional `wallpaper.jpg` or `wallpap
   until the TV restarts. Ask before restarting it.
 - Point the screensaver at the launcher's clock before disabling the stock screensaver:
   `settings put secure screensaver_components com.gathin.tvhome/.ClockDream`.
-- **Location / Jerebu & Waktu Solat**: Ask the person where in Malaysia they are located (e.g. Putrajaya, Cheras, Shah Alam, Melaka, JB, Penang, Kuantan, Kuching, KK). Set it via:
+- **Weather location / haze**: Ask which city or region should be used for local weather and air quality. Set it via:
   `adb shell am broadcast -a com.gathin.tvhome.SET_LOCATION -p com.gathin.tvhome --es query "<LOCATION>"`
-  This automatically calibrates both the official Department of Environment (JAS) APIMS haze / IPU ground station and JAKIM prayer times.
+  This updates the selected weather location and the corresponding Department of Environment (JAS) APIMS haze / IPU station. It does not configure prayer times.
 - **Check**: Home restarts within a few seconds with the new settings.
 - **Cache cleaning**: Glass TV clears the TV's app caches itself every 15 days ([docs/cache-clean.md](docs/cache-clean.md)).
   It needs the TV's permission once. With the person at the TV, run

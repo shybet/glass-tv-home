@@ -107,7 +107,7 @@ Launcher
   listing the HDMI ports, AV and Live TV, switching via the TV input framework.
 - Make D-pad navigation deterministic: Up/Down move exactly one row, Up from the dock goes to the top
   bar, the ends of the top bar don't fall through to tiles. Remember the last focused tile.
-- Ask for user location: Ask me where in Malaysia I am located (e.g. Putrajaya, Cheras, Shah Alam, Melaka, JB, Penang, Kuantan, Kuching, KK) so you can configure my local Department of Environment (JAS) haze / IPU monitoring station and JAKIM prayer times zone automatically using:
+- Ask for weather location: Ask which city or region should be used for local weather and Department of Environment (JAS) haze / IPU monitoring. Configure it using:
   `adb shell am broadcast -a com.gathin.tvhome.SET_LOCATION -p com.gathin.tvhome --es query "<LOCATION>"`
 - Keep it light: the TV has about 1 GB of RAM. No blur, no video, no network polling.
 

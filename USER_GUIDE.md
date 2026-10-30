@@ -10,7 +10,6 @@ Glass TV Home is a modern, lightweight home launcher replacement for Android TV 
 
 * 🚀 **Zero Ads & Ultralight**: Only ~453 KB in size. Saves over 400 MB of RAM compared to sluggish stock manufacturer launchers.
 * 🪟 **Frosted Glass Aesthetic (tvOS Style)**: Modern Apple TV-inspired interface with fluid focus animations and a floating glass dock.
-* 🕌 **Islamic Prayer Timetable & Daily Ayat**: Accurate 6-phase prayer timetable (Subuh, Syuruk, Zohor, Asar, Maghrib, Isyak) with active prayer emerald highlighting and daily Quranic verses.
 * ⛅ **Weather & Air Quality (API / AQI) Dashboard**: Live ambient temperature, "feels like", humidity, UV index, wind speed, sunrise/sunset, 12-hour forecast, 7-day outlook, and official Air Quality Index readings (APIMS).
 * 🌙 **StandBy Screensaver & 2-Hour Auto Power-Off**: Enters ambient black nightstand screensaver after 10 minutes of inactivity (burn-in safe for OLED/LED), and automatically turns off the TV display after 2 hours of sleep standby to save electricity.
 
@@ -22,7 +21,7 @@ Download the official release APKs based on your setup:
 * 📱 **For Android Phones & Tablets (Companion Installer App)**:  
   [**`glass-tv-installer.apk`** (5.2 MB)](https://github.com/aqmangge/glass-tv-home/raw/main/release/glass-tv-installer.apk) — **Primary Recommendation!** Install directly to your TV over Wi-Fi without needing a PC or cables.
 * 📺 **For Android TV & Google TV (Main Launcher)**:  
-  [**`glass-tv-home.apk`** (730 KB)](https://github.com/aqmangge/glass-tv-home/raw/main/release/glass-tv-home.apk) — Current stable release `v3.1.4` (Leanback weather bento grid, auto prayer schedule, 2-click RAM optimizer, DuitNow support).
+  [**`glass-tv-home.apk`** (730 KB)](https://github.com/aqmangge/glass-tv-home/raw/main/release/glass-tv-home.apk) — Current stable release `v3.1.4` (Leanback weather bento grid, local weather/AQI, 2-click RAM optimizer, DuitNow support).
 
 > [!NOTE]
 > ### 🇲🇾 Unifi TV Box (TM Unifi Plus Box) Users: Compatibility & Warranty Safety
@@ -184,14 +183,9 @@ Users who install the APK manually or relocate **DO NOT NEED A COMPUTER OR AI** 
 3. Press **OK**. A dialog modal will appear with 30+ official Malaysian DOE stations across all states:
    - *Putrajaya, Cheras (KL), Batu Muda (KL), Petaling Jaya, Shah Alam, Klang, Banting, Bandaraya Melaka, Alor Gajah, Bukit Rambai, Seremban, Nilai, Port Dickson, Larkin (JB), Pasir Gudang, Batu Pahat, Kluang, Tangkak, Seberang Jaya (Penang), Minden (USM), Balik Pulau, Ipoh, Taiping, Seri Manjung, Alor Setar, Sungai Petani, Langkawi, Kangar, Kuantan, Temerloh, Kuala Terengganu, Kemaman, Kota Bharu, Kota Kinabalu, Sandakan, Tawau, Kuching, Miri, Bintulu, Sibu, Labuan*.
 4. Scroll with the remote **UP / DOWN** arrows to select your station and press **OK**.
-5. Both the official JAS IPU readings and the JAKIM prayer timetable immediately calibrate to your chosen city!
+5. The weather location and official JAS IPU readings update to your chosen city!
 
-### B. Islamic Prayer Timetable & Daily Ayat
-* **6-Phase Prayer Timetable**: Subuh, Syuruk, Zohor, Asar, Maghrib, and Isyak synchronized with your local time zone.
-* **Active Window Glow**: The current active prayer window illuminates in emerald green.
-* **Daily Quranic Verse**: Rotating daily ayat with Arabic calligraphy and translations.
-
-### C. Dynamic 4K Wallpapers & Category Switcher
+### B. Dynamic 4K Wallpapers & Category Switcher
 * **Curated Themes**: Switch your home background between curated 4K categories directly from the remote:
   - 🌿 **Natural (Default / Bing Places)**: World landmarks, mountains, lakes, and nature landscapes with informative location stories updated weekly.
   - 🇲🇾 **Malaysia (Curated 14 States & Federal Territories)**: Pick wallpapers specifically for any of Malaysia's 14 states or rotate all states together via a dedicated sub-dialog:
@@ -229,8 +223,8 @@ Users who install the APK manually or relocate **DO NOT NEED A COMPUTER OR AI** 
   - When personal custom wallpapers are active, the left-hand text shelf / description is completely hidden (`View.GONE`) so your personal photos are displayed edge-to-edge without being obscured by location captions.
 * **Instant Shift**: Select **🔀 Next Wallpaper** anytime to immediately cycle to the next photo in your active category.
 
-### D. StandBy Ambient Mode & Smart Power Saving
-* **10 Minutes Idle**: Enters an ambient OLED-safe black StandBy screensaver displaying large 110sp numerals, Islamic Hijri date, and the upcoming prayer window.
+### C. StandBy Ambient Mode & Smart Power Saving
+* **10 Minutes Idle**: Enters an ambient OLED-safe black StandBy screensaver displaying large 110sp numerals, Gregorian date.
 * **2 Hours Later**: If left untouched, the TV display enters sleep standby (`GLOBAL_ACTION_LOCK_SCREEN`) to save power.
 * **Wake Up**: Press any button on the TV remote to wake the TV immediately.
 
@@ -243,17 +237,17 @@ A respectful spiritual living room feature synchronized live with official JAKIM
   3. **C. Azan Audio Presets**: Choose your preferred Azan audio: *Masjid As-Syakirin KLCC, Makkah Mukarramah, or Madinah Munawwarah*.
   4. **D. Live Test Mode**: Click **▶️ Test Azan Popup Now** to trigger an instant test overlay and verify sound volume.
 
-### F. Frosted Glass Settings Dropdown Menu ⚙️
+### D. Frosted Glass Settings Dropdown Menu ⚙️
 Clicking the **Settings (gear icon ⚙️)** on the top bar reveals an Apple tvOS-style floating glass menu:
 * 🖼️ **Wallpaper**: Launches the category selector dialog (*Natural, Skyscraper, Deep Space, Ocean, Minimalist Dark, Next Wallpaper*). Preferences persist across reboots.
 * 📍 **Location API Haze**: Opens a selector for 30+ official Malaysian DOE (JAS APIMS) air quality monitoring stations.
-* 🕌 **Location Waktu Solat**: Opens a selector for 35+ official JAKIM prayer zones across all Malaysian states.
+* 📍 **Weather Location**: Opens a region and city selector used by local weather and air-quality services.
 * 🔊 **Sound Effect**: Displays current audio theme (e.g. `Sound: PlayStation 5`) and launches the console sound profile selector with live previews.
 * 🔄 **Check for Updates**: Checks GitHub directly for newer releases or patches without requiring a PC.
 * ⚙️ **All Settings**: Opens standard Android TV system preferences.
 *(Shortcut: Long-pressing the Settings button on your remote directly launches standard Android settings).*
 
-### G. Console Sound Effects & Mute Mode (PS5, Switch, Xbox) 🎮🔊
+### E. Console Sound Effects & Mute Mode (PS5, Switch, Xbox) 🎮🔊
 Customize your TV navigation audio with iconic gaming console profiles or mute all sounds entirely:
 * **PlayStation 5 (Default)**: Sleek, high-definition acoustic whooshes and tactile clicks.
 * **Nintendo Switch**: Sharp mechanical tactile clicks and cheerful confirmation snaps.
@@ -262,7 +256,7 @@ Customize your TV navigation audio with iconic gaming console profiles or mute a
 * **Instant Audio Audition**: Tapping any theme inside the dialog immediately plays its signature chime.
 * **Persistent Preferences**: Settings remain saved across TV restarts via SharedPreferences.
 
-### H. On-TV OTA Updates & Auto-Patch Checker 🔄🚀
+### F. On-TV OTA Updates & Auto-Patch Checker 🔄🚀
 Glass TV Home features a built-in OTA update system so you can update directly on your TV without a computer:
 * **Manual Check**: Navigate to **Settings (⚙️) $\rightarrow$ Check for Updates**. The app contacts the GitHub release manifest and notifies you if a new version is available.
 * **Silent Startup Check**: The launcher quietly checks for new versions in the background when booted. If a new patch is found, a changelog dialog is presented.
@@ -372,7 +366,7 @@ If you prefer using a physical USB drive:
 * Glass TV Home is a **native Android TV application** (Native Kotlin/AndroidX).
 * Once the APK is installed on the TV:
   - **Full Remote Control**: The D-Pad (Up/Down/Left/Right/OK), Back, and Home buttons navigate everything natively.
-  - **All smart features run locally**: Clock, Hijri dates, prayer timetable, weather & AQI (APIMS), 10-minute screensaver, and 2-hour auto sleep operate entirely inside the TV without requiring an AI agent, computer, or active subscription.
+  - **All smart features run locally**: Clock, Gregorian date, weather & AQI (APIMS), 10-minute screensaver, and 2-hour auto sleep operate entirely inside the TV without requiring an AI agent, computer, or active subscription.
   - Family members and non-technical users can use the TV just like a standard commercial smart TV.
 * **The AI's role is purely as a "mechanic/technician"** during the initial setup to automate installation and debloating. Once installed, Glass TV Home is 100% independent.
 
