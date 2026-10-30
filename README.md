@@ -4,7 +4,7 @@
 and come home to just your apps, with a new place to visit behind them every week.**
 
 <p align="center">
-  <img src="docs/screenshots/glass_tv_os_showcase_poster.jpg" width="100%" alt="Glass TV OS Presentation Poster">
+  <img src="docs/screenshots/weather-live.png" width="42%" alt="Weather and Air Quality Dashboard">
 </p>
 
 <p align="center">
@@ -108,11 +108,6 @@ every week.
   folder and choose how often they change, down to every 5 seconds. Each picture is decoded in the background
   and cross-faded.
 
-| | |
-|---|---|
-| ![Home with Masjid Negeri Shah Alam, Selangor, story caption and glass dock](docs/screenshots/home.jpg) | ![The app grid scrolled down over the wallpaper, rows feathering out under the top bar](docs/screenshots/grid.jpg) |
-| *Home, with this week's place* | *Every app, feathering out under the top bar* |
-| ![The glass menu and quick controls over Jambatan Angkat Terengganu](docs/screenshots/inputs.jpg) | ![The StandBy clock screensaver with large 110sp digits and Gregorian date](docs/screenshots/screensaver-live.png) |
 | *Inputs, in glass* | *The StandBy clock screensaver* |
 
 Still light: on a Xiaomi Mi TV with 1.8 GB of RAM the launcher uses about 80–100 MB and stays there over hours
