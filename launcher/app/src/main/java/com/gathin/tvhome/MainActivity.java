@@ -1855,6 +1855,22 @@ public class MainActivity extends Activity implements AppAdapter.TileListener {
         if (heroShelf != null) heroShelf.animate().alpha(0f).setDuration(reducedMotion ? 100 : 160).start();
     }
 
+    /**
+     * Lights the room in this app's colour. From one app to the next it blends straight across,
+     * with no dip to plain in between, whether the move is along the dock, down into the grid or
+     * back up again.
+     */
+    private void showAmbient(int color) {
+        if (!ambientShown) {
+            setAmbient(color);
+            ambient.animate().alpha(1f).setDuration(reducedMotion ? 160 : 600)
+                    .setUpdateListener(a -> syncGlassGlow()).start();
+            ambientShown = true;
+        } else if (color != ambientColor) {
+            setAmbient(color, !reducedMotion);
+        }
+    }
+
     private void hideGlass() {
         glassShown = false;
     }
