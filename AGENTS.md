@@ -211,7 +211,7 @@ A theme is a folder with `config.json` (and optional `wallpaper.jpg` or `wallpap
   `settings put secure screensaver_components com.gathin.tvhome/.ClockDream`.
 - **Weather location / haze**: Ask which city or region should be used for local weather and air quality. Set it via:
   `adb shell am broadcast -a com.gathin.tvhome.SET_LOCATION -p com.gathin.tvhome --es query "<LOCATION>"`
-  This updates the selected weather location and the corresponding Department of Environment (JAS) APIMS haze / IPU station. It does not configure prayer times.
+  This updates the selected weather location and the corresponding Department of Environment (JAS) APIMS haze / IPU station.
 - **Check**: Home restarts within a few seconds with the new settings.
 - **Cache cleaning**: Glass TV clears the TV's app caches itself every 15 days ([docs/cache-clean.md](docs/cache-clean.md)).
   It needs the TV's permission once. With the person at the TV, run

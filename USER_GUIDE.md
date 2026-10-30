@@ -121,13 +121,13 @@ update patch latest glass tv dekat tv rumah saya: https://github.com/aqmangge/gl
 > **🚨 Mandatory Instruction For AI Assistants (AI Assistant Rule)**:
 > When a user gives you the prompt `install ni dekat tv rumah saya: https://github.com/aqmangge/glass-tv-home`, the AI **MUST** ask the user:
 > 1. *"What is your TV's IP address under Settings -> Network & Internet (or your TV brand)?"* (if not auto-discovered)
-> 2. *"Where are you located in Malaysia (e.g. Putrajaya, Cheras, Shah Alam, Melaka, Johor Bahru, Penang, Kuantan, Kuching, Kota Kinabalu, etc.) so that official Jabatan Alam Sekitar (DOE / APIMS) haze / IPU readings and JAKIM prayer times can be configured automatically?"*
+> 2. *"Which city or region should be used for local weather and official Jabatan Alam Sekitar (DOE / APIMS) haze / IPU readings?"*
 > 
 > The AI can immediately install the prebuilt APK from `release/glass-tv-home.apk` or build it, run debloat, and set the user location via:
 > ```bash
 > adb shell am broadcast -a com.gathin.tvhome.SET_LOCATION -p com.gathin.tvhome --es query "<USER_LOCATION>"
 > ```
-> *(If the user does not specify a location, the default preset is **Putrajaya** / Station CA17W).*
+> *(If the user does not specify a location, the default weather preset is **Putrajaya** / Station CA17W).*
 
 ---
 
@@ -227,15 +227,6 @@ Users who install the APK manually or relocate **DO NOT NEED A COMPUTER OR AI** 
 * **10 Minutes Idle**: Enters an ambient OLED-safe black StandBy screensaver displaying large 110sp numerals, Gregorian date.
 * **2 Hours Later**: If left untouched, the TV display enters sleep standby (`GLOBAL_ACTION_LOCK_SCREEN`) to save power.
 * **Wake Up**: Press any button on the TV remote to wake the TV immediately.
-
-### E. 16:9 Floating Azan Notification & Audio Settings 🕌
-A respectful spiritual living room feature synchronized live with official JAKIM Malaysia E-Solat schedules:
-* **Floating System Overlay**: At the precise time of prayer, an elegant 16:9 frosted glass notification card automatically appears on screen over running apps (Netflix, YouTube, media players) without crashing or interrupting playback.
-* **All-In-One Control Center**: Open via the **Candy Box (㗊)** icon on the top bar or by **Holding the HOME button**:
-  1. **A. Master Popup Switch**: Toggle Azan notification overlays globally *ON* or *OFF*.
-  2. **B. Individual Prayer Toggles**: Set alerts separately for each of the 6 prayer periods: *Subuh, Syuruk, Zohor, Asar, Maghrib, Isyak*.
-  3. **C. Azan Audio Presets**: Choose your preferred Azan audio: *Masjid As-Syakirin KLCC, Makkah Mukarramah, or Madinah Munawwarah*.
-  4. **D. Live Test Mode**: Click **▶️ Test Azan Popup Now** to trigger an instant test overlay and verify sound volume.
 
 ### D. Frosted Glass Settings Dropdown Menu ⚙️
 Clicking the **Settings (gear icon ⚙️)** on the top bar reveals an Apple tvOS-style floating glass menu:

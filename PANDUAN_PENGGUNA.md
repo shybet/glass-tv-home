@@ -117,19 +117,19 @@ update patch latest glass tv dekat tv rumah saya: https://github.com/aqmangge/gl
 ```
 *(Atau: `kemaskini glass tv dekat tv saya: https://github.com/aqmangge/glass-tv-home`)*
 
-AI akan menyambung ke TV melalui Wi-Fi, memasang kemas kini (`adb install -r`), dan membuka semula aplikasi dalam masa 5 saat. **Semua gambar wallpaper, susunan aplikasi di dock, dan pilihan zon solat/bunyi anda akan 100% kekal!**
+AI akan menyambung ke TV melalui Wi-Fi, memasang kemas kini (`adb install -r`), dan membuka semula aplikasi dalam masa 5 saat. **Semua gambar wallpaper, susunan aplikasi di dock, dan pilihan lokasi cuaca/bunyi anda akan 100% kekal!**
 
 > [!IMPORTANT]
 > **🚨 Pesanan Khas Untuk Pembantu AI (AI Assistant Rule)**:
 > Apabila pengguna memberikan prompt `install ni dekat tv rumah saya: https://github.com/aqmangge/glass-tv-home`, AI **WAJIB** bertanya kepada pengguna:
 > 1. *"Apakah alamat IP TV anda di menu Settings -> Network & Internet (atau jenama TV anda)?"* (jika belum dapat dikesan secara automatik)
-> 2. *"Di manakah lokasi anda di Malaysia (contoh: Putrajaya, Cheras, Shah Alam, Melaka, Johor Bahru, Pulau Pinang, Kuantan, Kuching, Kota Kinabalu, dll.) supaya data jerebu/IPU rasmi Jabatan Alam Sekitar (JAS) dan jadual waktu solat JAKIM dapat diselaraskan secara automatik?"*
+> 2. *"Bandar atau wilayah manakah yang patut digunakan untuk data cuaca dan jerebu/IPU rasmi Jabatan Alam Sekitar (JAS)?"*
 > 
 > Selepas bersambung ke TV, AI boleh pasang terus APK rasmi sedia ada dari `release/glass-tv-home.apk` atau compile APK baharu, jalankan debloat, dan tetapkan lokasi pengguna via:
 > ```bash
 > adb shell am broadcast -a com.gathin.tvhome.SET_LOCATION -p com.gathin.tvhome --es query "<NAMA_LOKASI>"
 > ```
-> *(Jika pengguna tidak menyatakan lokasi, sistem akan menggunakan lokasi lalai: **Putrajaya** / Stesen CA17W).*
+> *(Jika pengguna tidak menyatakan lokasi, sistem akan menggunakan lokasi cuaca lalai: **Putrajaya** / Stesen CA17W).*
 
 ---
 
@@ -188,11 +188,6 @@ Pengguna yang memasang fail APK secara manual atau berpindah rumah **TIDAK PERLU
 4. Gunakan butang **Atas / Bawah** remote untuk memilih stesen anda, lalu tekan **OK**.
 5. Lokasi cuaca dan bacaan Indeks Pencemaran Udara (JAS IPU) akan dikemaskini mengikut bandar pilihan anda!
 
-### B. Waktu Solat & Ayat Al-Quran Harian
-* **Jadual Solat 6 Waktu**: Subuh, Syuruk, Zohor, Asar, Maghrib, Isyak mengikut zon waktu Malaysia secara tepat.
-* **Warna Hijau Zamrud**: Waktu solat yang sedang berlangsung akan automatik bertukar warna hijau terang supaya anda sentiasa peka waktu ibadah.
-* **Ayat Al-Quran Pilihan**: Ayat al-Quran harian berserta teks Arab yang indah dan terjemahan maksud.
-
 ### B. Gambar Latar Belakang & Pilihan Kategori Wallpaper (4K Dynamic)
 * **Koleksi Tema Pelbagai**: Kini anda boleh memilih kategori tema wallpaper kegemaran anda secara langsung dari skrin utama melalui menu Tetapan (ikon ⚙️):
   - 🌿 **Natural (Lalai / Bing Places)**: Landskap alam semula jadi bertaraf 4K dengan info nama lokasi, negara, dan penerangan ringkas setiap minggu.
@@ -232,18 +227,9 @@ Pengguna yang memasang fail APK secara manual atau berpindah rumah **TIDAK PERLU
 * **Tukar Gambar Serta-Merta**: Pilih **🔀 Next Wallpaper** untuk beralih ke gambar seterusnya pada bila-bila masa.
 
 ### C. Screensaver StandBy & Auto-Off 2 Jam (Jimat Elektrik)
-* **10 Minit Dibiarkan Tanpa Butang**: TV akan automatik masuk mod *StandBy Screensaver* berlatar hitam pekat (selamat untuk mengelakkan *screen burn-in* pada TV OLED/LED), memaparkan jam besar 110sp, tarikh Hijriah (cth: `🌙 12 Jamadilawal 1448H`), dan solat seterusnya.
+* **10 Minit Dibiarkan Tanpa Butang**: TV akan automatik masuk mod *StandBy Screensaver* berlatar hitam pekat (selamat untuk mengelakkan *screen burn-in* pada TV OLED/LED), memaparkan jam besar 110sp, tarikh Gregorian.
 * **2 Jam Selepas Itu**: Jika TV terus tidak disentuh, sistem akan mematikan paparan TV (*sleep standby*) secara automatik.
 * **Untuk Hidupkan Semula**: Tekan mana-mana butang pada remote untuk bangunkan TV.
-
-### E. Notifikasi Popup Azan 16:9 & Tetapan Audio Mengikut Waktu Solat 🕌
-Ciri rohani eksklusif untuk kediaman Muslim pintar yang disegerakkan secara langsung dengan waktu rasmi JAKIM E-Solat Malaysia:
-* **Terapung Di Atas Mana-Mana Aplikasi**: Apabila masuk waktu solat, kad kaca 16:9 yang elegan akan muncul terapung di skrin secara automatik walaupun anda sedang menonton Netflix, YouTube, atau aplikasi TV lain tanpa mengganggu kestabilan sistem.
-* **Tetapan Penuh (All-In-One Dialog)**: Buka melalui ikon **Candy Box (㗊)** di bar atas atau **Tekan & Tahan Butang HOME**:
-  1. **A. Suis Utama Popup Azan**: Hidupkan (*ON*) atau matikan (*OFF*) paparan notifikasi terapung.
-  2. **B. Tetapan Waktu Solat Individu**: Kawal notifikasi secara berasingan untuk setiap 6 waktu: *Subuh, Syuruk, Zohor, Asar, Maghrib, Isyak*. Setiap suis boleh dihidupkan atau dimatikan mengikut keselesaan keluarga anda.
-  3. **C. Pilihan Bunyi Azan**: Pilih antara audio azan penuh yang merdu: *Masjid As-Syakirin KLCC, Makkah Mukarramah, atau Madinah Munawwarah*.
-  4. **D. Uji Popup Azan Serta-Merta**: Tekan butang **▶️ Uji Popup Azan Sekarang** untuk mencetuskan pratonton kad terapung dan memeriksa kelantangan audio dengan 1 klik.
 
 ### D. Menu Tetapan Frosted Glass (Settings Dropdown Menu) ⚙️
 Di bar atas skrin utama, tekan butang **Settings (ikon gear ⚙️)** untuk memaparkan menu terapung gaya kaca Apple tvOS:
